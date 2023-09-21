@@ -39,9 +39,9 @@ const App = () => {
   
   return (
     <div className="App">
-      <h1>{schedule.title}</h1>
-      <CourseList courses={schedule.courses} />
+      {/* <h1>{schedule.title}</h1> */}
       <Banner title={schedule.title} />
+      <CourseList courses={schedule.courses} />
     </div>
   );
 };
