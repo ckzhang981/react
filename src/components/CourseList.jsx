@@ -1,11 +1,13 @@
+import Course from "./Course";
+import './CourseList.css'
+
 const CourseList = (props) => {
     const courses = props.courses;
     return (
-        <div>
+        <div className="course-list">
             {Object.entries(courses).map(([courseId, courseInfo]) => (
-            <div key = {courseId}>
-                {courseInfo.term} CS {courseInfo.number}: {courseInfo.title} 
-            </div>))}
+                <Course key={courseId} course={courseInfo}/>
+            ))}
         </div>
     )
 };

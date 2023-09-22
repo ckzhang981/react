@@ -1,9 +1,9 @@
 const Banner = (props) => {
     const title = props.title;
     return (
-        <div>
+        <h1>
             {title}
-        </div>
+        </h1>
     )
 };
   
