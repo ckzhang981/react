@@ -8,3 +8,8 @@
   display: flex;
   flex-direction: column;
 }
+
+.selectCard {
+  background-color:lemonchiffon;
+  color: green;
+}

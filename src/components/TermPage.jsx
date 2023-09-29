@@ -29,11 +29,17 @@ const TermSelector = ({selection, setSelection}) => (
 const TermPage = (props) => {
     const { data } = props;
     const [selection, setSelection] = useState(() => Object.keys(terms)[0]);
+    const [selectCard, setSelectCard] = useState([]);
+
+    const toggleSelected = (item) => setSelectCard(
+        selectCard.includes(item) ? selectCard.filter(x => x !== item) : [...selectCard, item]
+    )
+
     return (
         <div>
-        <TermSelector selection={selection} setSelection={setSelection} />
-        <Banner title={data.title} />
-        <CourseList courses={data.courses} selectedTerm={selection} />
+            <TermSelector selection={selection} setSelection={setSelection} />
+            <Banner title={data.title} />
+            <CourseList courses={data.courses} selectedTerm={selection} selectCard={selectCard} toggleSelected={toggleSelected}/>
         </div>
     );
 }
