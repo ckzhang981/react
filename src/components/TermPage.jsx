@@ -1,6 +1,8 @@
 import { useState } from 'react';
-import CourseList from "./CourseList";
+import Modal from './Modal';
 import Banner from "./Banner";
+import Schedule from './Schedule';
+import CourseList from "./CourseList";
 
 const terms = {
     Fall: 'Fall',
@@ -30,15 +32,22 @@ const TermPage = (props) => {
     const { data } = props;
     const [selection, setSelection] = useState(() => Object.keys(terms)[0]);
     const [selectCard, setSelectCard] = useState([]);
-
+    const [open, setOpen] = useState(false);
+    const openModal = () => setOpen(true);
+    const closeModal = () => setOpen(false);
     const toggleSelected = (item) => setSelectCard(
         selectCard.includes(item) ? selectCard.filter(x => x !== item) : [...selectCard, item]
     )
 
     return (
-        <div>
-            <TermSelector selection={selection} setSelection={setSelection} />
+        <div className='TermSelecter'>
             <Banner title={data.title} />
+            <TermSelector selection={selection} setSelection={setSelection} />
+            <button className="btn btn-outline-dark" onClick={openModal}>Schedule</button>
+
+            <Modal open={open} close={closeModal}>
+                <Schedule selectedCourses={selectCard}/>
+            </Modal>
             <CourseList courses={data.courses} selectedTerm={selection} selectCard={selectCard} toggleSelected={toggleSelected}/>
         </div>
     );

@@ -13,5 +13,5 @@ const CourseList = (props) => {
         </div>
     )
 };
-  
+
 export default CourseList;

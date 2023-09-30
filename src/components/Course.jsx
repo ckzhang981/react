@@ -13,5 +13,5 @@ const Course = (props) => {
         </div>
     )
 };
-  
+
 export default Course;
