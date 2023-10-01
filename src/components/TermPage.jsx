@@ -40,13 +40,15 @@ const TermPage = (props) => {
     )
 
     return (
-        <div className='TermSelecter'>
+        <div>
             <Banner title={data.title} />
-            <TermSelector selection={selection} setSelection={setSelection} />
-            <button className="btn btn-outline-dark" onClick={openModal}>Schedule</button>
-
+            <div style={{ textAlign: 'center' }}>
+                <TermSelector selection={selection} setSelection={setSelection} style={{ display: 'inline-block' }} />
+                <button className="btn btn-outline-dark" style={{ float: 'right' }} onClick={openModal}>Schedule</button>
+            </div>
             <Modal open={open} close={closeModal}>
-                <Schedule selectedCourses={selectCard}/>
+                {selectCard.length === 0 ? <h5>You have not selected any course yet</h5> :
+                <Schedule selectedCourses={selectCard}/>}
             </Modal>
             <CourseList courses={data.courses} selectedTerm={selection} selectCard={selectCard} toggleSelected={toggleSelected}/>
         </div>
