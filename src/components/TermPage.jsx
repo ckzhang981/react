@@ -3,6 +3,8 @@ import Modal from './Modal';
 import Banner from "./Banner";
 import Schedule from './Schedule';
 import CourseList from "./CourseList";
+import { useEffect } from 'react';
+import { courseConflict } from '../utilities/functions';
 
 const terms = {
     Fall: 'Fall',
@@ -37,7 +39,12 @@ const TermPage = (props) => {
     const closeModal = () => setOpen(false);
     const toggleSelected = (item) => setSelectCard(
         selectCard.includes(item) ? selectCard.filter(x => x !== item) : [...selectCard, item]
-    )
+    );
+    const [noSelection, setNoSelection] = useState([]);
+    useEffect(() => {
+        const noSelectionList = Object.values(data.courses).filter(course1 => selectCard.some(course2 => courseConflict(course1, course2)));
+        setNoSelection(noSelectionList);
+    }, [selectCard]);
 
     return (
         <div>
@@ -50,7 +57,8 @@ const TermPage = (props) => {
                 {selectCard.length === 0 ? <h5>You have not selected any course yet</h5> :
                 <Schedule selectedCourses={selectCard}/>}
             </Modal>
-            <CourseList courses={data.courses} selectedTerm={selection} selectCard={selectCard} toggleSelected={toggleSelected}/>
+            <CourseList courses={data.courses} selectedTerm={selection} selectCard={selectCard} 
+                        toggleSelected={toggleSelected} noSelection={noSelection}/>
         </div>
     );
 }
