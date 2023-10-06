@@ -1,15 +1,15 @@
 import { useNavigate } from 'react-router-dom';
 import { useParams } from 'react-router-dom';
-// import { useDbUpdate } from '../utilities/firebase';
 import { useFormData } from '../utilities/useFormData';
 import './CourseForm.css'
 
 const validateUserData = (key, val) => {
     switch (key) {
-      case 'firstName': case 'lastName':
-        return /(^\w\w)/.test(val) ? '' : 'must be least two characters';
-      case 'email':
-        return /^\w+@\w+[.]\w+/.test(val) ? '' : 'must contain name@domain.top-level-domain';
+      case 'title':
+        return /(^\w\w)/.test(val) ? '' : 'Title must be least two characters';
+      case 'meets':
+        return /^((M|Tu|W|Th|F)+[\s][0-9]{1,2}:[0-9]{2}-[0-9]{1,2}:[0-9]{2})$|^$/.test(val) ? '' 
+        : 'Must contain days (M,Tu,W,Th,F) and start-end (00:00-00:00), e.g., MWF 12:00-13:20';
       default: return '';
     }
 };
