@@ -57,7 +57,7 @@ const TermPage = (props) => {
                 {selectCard.length === 0 ? <h5>You have not selected any course yet</h5> :
                 <Schedule selectedCourses={selectCard}/>}
             </Modal>
-            <CourseList courses={data.courses} selectedTerm={selection} selectCard={selectCard} 
+            <CourseList courses={data.courses} keys={Object.keys(data.courses)} selectedTerm={selection} selectCard={selectCard} 
                         toggleSelected={toggleSelected} noSelection={noSelection}/>
         </div>
     );

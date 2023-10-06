@@ -4,6 +4,7 @@ import './App.css';
 import TermPage from "./components/TermPage";
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { useJsonQuery } from './utilities/fetch';
+import Dispatcher from './components/Dispatcher';
 
 const queryClient = new QueryClient();
 
@@ -16,7 +17,8 @@ const Main = () => {
 
   return (
     <div className="App">
-      <TermPage data = {data} />
+      {/* <TermPage data = {data} /> */}
+      <Dispatcher data = {data} />
     </div>
   );
 }

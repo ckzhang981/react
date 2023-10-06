@@ -1,7 +1,11 @@
+import 'bootstrap/dist/css/bootstrap.min.css';
 import './Course.css'
+import { Link } from 'react-router-dom';
+
+
 
 const Course = (props) => {
-    const {course, selectCard, toggleSelected, noSelection} = props;
+    const { courseId, course, selectCard, toggleSelected, noSelection} = props;
     return (
         <div className={`card ${noSelection.includes(course) ? 'noSelection' : ''}`} onClick={!noSelection.includes(course) ?
                                                                              () => toggleSelected(course) : null}>
@@ -10,6 +14,7 @@ const Course = (props) => {
                 <p className="card-text">{course.title}</p>
                 <hr className="custom-divider"/> 
                 <p className="card-text">{course.meets}</p>
+                <Link className="btn btn-primary" to={`/courses/${courseId}/edit`}>Edit</Link>
             </div>
         </div>
     )
