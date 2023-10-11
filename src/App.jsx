@@ -9,11 +9,6 @@ import { useDbData } from "./utilities/firebase";
 const queryClient = new QueryClient();
 
 const Main = () => {
-  // const [data, isLoading, error] = useJsonQuery('https://courses.cs.northwestern.edu/394/guides/data/cs-courses.php');
-
-  // if (error) return <h1>Error loading user data: {`${error}`}</h1>;
-  // if (isLoading) return <h1>Loading user data...</h1>;
-  // if (!data) return <h1>No user data found</h1>;
   const [data, error] = useDbData('/');
 
   if (error) return <h1>Error loading data: {error.toString()}</h1>;
