@@ -5,6 +5,7 @@ import Schedule from './Schedule';
 import CourseList from "./CourseList";
 import { useEffect } from 'react';
 import { courseConflict } from '../utilities/functions';
+import Navigation from './Navigation';
 
 const terms = {
     Fall: 'Fall',
@@ -53,6 +54,7 @@ const TermPage = (props) => {
                 <TermSelector selection={selection} setSelection={setSelection} style={{ display: 'inline-block' }} />
                 <button className="btn btn-outline-dark" style={{ float: 'right' }} onClick={openModal}>Schedule</button>
             </div>
+            <Navigation />
             <Modal open={open} close={closeModal}>
                 {selectCard.length === 0 ? <h5>You have not selected any course yet</h5> :
                 <Schedule selectedCourses={selectCard}/>}

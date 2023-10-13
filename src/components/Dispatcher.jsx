@@ -11,7 +11,7 @@ const CourseFormWrapper = ({ data }) => {
       return <div>Course not found</div>;
     }
     return <CourseForm course={course} />;
-  }
+}
 
 const Dispatcher = ({data}) => (
     <BrowserRouter>

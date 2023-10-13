@@ -45,7 +45,6 @@ const CourseForm = ({course}) => {
       evt.preventDefault();
       if (!state.errors) {
         update(state.values);
-        console.log(state);
       }
     };
     
