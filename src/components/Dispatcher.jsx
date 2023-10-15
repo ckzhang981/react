@@ -13,15 +13,18 @@ const CourseFormWrapper = ({ data }) => {
     return <CourseForm course={course} />;
 }
 
-const Dispatcher = ({data}) => (
-    <BrowserRouter>
-        <Routes>
-            <Route path="/" element={<TermPage data={data}/>}></Route>
-            {/* When the user navigates to the root path ("/"), 
-            the TermPage component will be rendered, and the data prop will be passed to it. */}
-            <Route path="/courses/:courseId/edit" element={<CourseFormWrapper data={data} />} />
-        </Routes>
-    </BrowserRouter>
-);
+const Dispatcher = ({data}) => {
+
+    return (
+        <BrowserRouter>
+            <Routes>
+                <Route path="/" element={<TermPage data={data}/>}></Route>
+                {/* When the user navigates to the root path ("/"), 
+                the TermPage component will be rendered, and the data prop will be passed to it. */}
+                <Route path="/courses/:courseId/edit" element={<CourseFormWrapper data={data} />} />
+            </Routes>
+        </BrowserRouter>
+    )
+};
 
 export default Dispatcher;
